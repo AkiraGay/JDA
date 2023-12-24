@@ -227,7 +227,30 @@ public interface Activity
         Checks.notLonger(name, 128, "Name");
         return EntityBuilder.createActivity(name, null, ActivityType.COMPETING);
     }
-
+    
+    /**
+     * Creates a new Activity instance with the specified name.
+     * <br>This will display as {@code CUSTOM_STATUS} in the official client
+     * 
+     * @param  name
+     *         The not-null name of the newly created game
+     * 
+     * @throws IllegalArgumentException
+     *         If the specified name is null, empty, blank or longer than 128 characters
+     * 
+     * @return A valid Activity instance with the provided name with {@link net.dv8tion.jda.api.entities.Activity.ActivityType#CUSTOM_STATUS}
+     *
+     * @since  4.2.1
+     */
+    
+    @Nonnull
+    static Activity custom(@Nonnull String name)
+    {
+        Checks.notBlank(name, "Name");
+        name = name.trim();
+        Checks.notLonger(name, 128, "Name");
+        return EntityBuilder.createActivity(name, null, ActivityType.CUSTOM_STATUS);
+    }
     /**
      * Creates a new Activity instance with the specified name.
      *
