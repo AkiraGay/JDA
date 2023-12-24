@@ -311,6 +311,8 @@ public interface Activity
                 return watching(name);
             case COMPETING:
                 return competing(name);
+            case CUSTOM_STATUS:
+                return custom(name);
             default:
                 throw new IllegalArgumentException("ActivityType " + type + " is not supported!");
         }
